@@ -32,7 +32,7 @@ bool present_in_col(int c, int n) {
    return false;
 }
 
-//Checks if the number, n, is present in the block(block_r * block*c) - a 3*3 block
+//Checks if the number, n, is present in the block(block_r * block_c) - a 3*3 block
 bool present_in_block(int block_r, int block_c, int n) {
    for(int r = 0; r < 3; r++) {
       for(int c = 0; c < 3; c++) {
