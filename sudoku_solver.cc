@@ -3,6 +3,7 @@
 #include <string>
 using namespace std;
 
+//The Sudoku Grid
 int grid[9][9] = {
    {0, 0, 0, 0, 0, 0, 0, 0, 0},
    {0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -15,6 +16,7 @@ int grid[9][9] = {
    {0, 0, 0, 0, 0, 0, 0, 0, 0}
 };
 
+//Checks if the number, n, is present in the row, r.
 bool present_in_row(int r, int n) {
    for(int c = 0; c < 9; c++) {
       if (grid[r][c] == n) return true;
@@ -22,6 +24,7 @@ bool present_in_row(int r, int n) {
    return false;
 }
 
+//Checks if the number, n, is present in the column, c.
 bool present_in_col(int c, int n) {
    for(int r = 0; r < 9; r++) {
       if (grid[r][c] == n) return true;
@@ -29,6 +32,7 @@ bool present_in_col(int c, int n) {
    return false;
 }
 
+//Checks if the number, n, is present in the block(block_r * block*c) - a 3*3 block
 bool present_in_block(int block_r, int block_c, int n) {
    for(int r = 0; r < 3; r++) {
       for(int c = 0; c < 3; c++) {
@@ -38,6 +42,7 @@ bool present_in_block(int block_r, int block_c, int n) {
    return false;
 }
 
+//Checks if the row, r, and column, c, is empty.
 bool empty_place(int &r, int &c) {
    for(r = 0; r < 9; r++) {
       for(c = 0; c < 9; c++) {
@@ -47,12 +52,14 @@ bool empty_place(int &r, int &c) {
    return false;
 }
 
+//Checks if the number, n, is valid for the row, r, and column, c.
 bool valid_place(int r, int c, int n) {
    int block_r = r - r%3;
    int block_c = c - c%3;
    return !present_in_row(r, n) && !present_in_col(c, n) && !present_in_block(block_r, block_c, n);
 }
 
+//Prints out the solved Sudoku Grid
 void grid_format() {
    for(int r = 0; r < 9; r++) {
       for(int c = 0; c < 9; c++) {
@@ -71,6 +78,7 @@ void grid_format() {
    }
 }
 
+//Uses recursion to solve the Sudoku Grid
 bool solver() {
    int row;
    int col;
@@ -89,6 +97,7 @@ bool solver() {
    return false;
 }
 
+//MAIN
 int main() {
    cout << "Please enter a 9x9 matrix:" << endl;
    for(int r = 0; r < 9; r++) {
